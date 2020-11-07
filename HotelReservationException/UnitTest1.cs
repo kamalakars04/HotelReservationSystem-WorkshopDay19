@@ -9,15 +9,20 @@ namespace HotelReservationMSTest
     public class UnitTest1
     {
         /// <summary>
-        /// UC 2 Gives the date range for normal customer.
+        /// TC 2 Gives the date range for normal customer.
         /// </summary>
         [TestMethod]
         public void GiveDateRangeForNormalCustomer()
         {
+            //Arrange
+            HotelDetails expectedHotel = new HotelDetails("Lakewood", 110, 150);
+            expectedHotel.GetTotalFare(new DateTime(2020, 09, 10), new DateTime(2020, 09, 11));
+
             // Act
             Icustomer customer = new HotelReservationSystem();
             List<HotelDetails> actual = customer.GetCheapestHotel(new DateTime(2020, 09, 10), new DateTime(2020, 09, 11));
-            List<HotelDetails> expected = new List<HotelDetails> { new HotelDetails("Lakewood", 220) };
+            List<HotelDetails> expected = new List<HotelDetails> {expectedHotel};
+            
 
             // Assert
             CollectionAssert.AreEqual(expected, actual);
