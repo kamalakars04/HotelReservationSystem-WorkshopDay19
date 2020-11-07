@@ -1,10 +1,16 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using HotelReservationSystemWorkshop;
-using System.Collections.Generic;
-using System;
-
+// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="fileName.cs" company="Bridgelabz">
+//   Copyright © 2018 Company
+// </copyright>
+// <creator Name="Your name"/>
+// --------------------------------------------------------------------------------------------------------------------
 namespace HotelReservationMSTest
 {
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using HotelReservationSystemWorkshop;
+    using System.Collections.Generic;
+    using System;
+
     [TestClass]
     public class UnitTest1
     {
@@ -60,6 +66,24 @@ namespace HotelReservationMSTest
             // Act
             Icustomer customer = new HotelReservationSystem();
             List<HotelDetails> actual = customer.GetCheapestBestRatedHotel(new DateTime(2020, 09, 11), new DateTime(2020, 09, 12));
+
+            // Assert
+            CollectionAssert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        /// TC 7 Gives the date range for normal customer best rated hotel.
+        /// </summary>
+        [TestMethod]
+        public void GiveDateRangeForNormalCustomerBestRatedHotel()
+        {
+            //Arrange
+            List<HotelDetails> expected = new List<HotelDetails> { new HotelDetails("Ridgewood", 220, 150, 4) };
+            expected.ForEach(hotel => hotel.GetTotalFare(new DateTime(2020, 09, 11), new DateTime(2020, 09, 12)));
+
+            // Act
+            Icustomer customer = new HotelReservationSystem();
+            List<HotelDetails> actual = customer.GetBestRatedHotel(new DateTime(2020, 09, 11), new DateTime(2020, 09, 12));
 
             // Assert
             CollectionAssert.AreEqual(expected, actual);

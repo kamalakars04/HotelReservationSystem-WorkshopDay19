@@ -1,9 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="fileName.cs" company="Bridgelabz">
+//   Copyright © 2018 Company
+// </copyright>
+// <creator Name="Your name"/>
+// --------------------------------------------------------------------------------------------------------------------
 namespace HotelReservationSystemWorkshop
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
     public class HotelReservationSystem : IAdmin,Icustomer
     {
         static Dictionary<string, HotelDetails> regularHotelMap = new Dictionary<string, HotelDetails>();
@@ -121,6 +126,42 @@ namespace HotelReservationSystemWorkshop
                     if(hotel.Value.ratings == ratings)
                         hotelOutput.Add(hotel.Value);
                 }
+            }
+            return hotelOutput;
+        }
+
+        /// <summary>
+        /// UC 7 Gets the best rated hotel.
+        /// </summary>
+        /// <param name="startDate">The start date.</param>
+        /// <param name="endDate">The end date.</param>
+        /// <returns></returns>
+        /// <exception cref="HotelReservationException">startDate is after endDate</exception>
+        public List<HotelDetails> GetBestRatedHotel(DateTime startDate, DateTime endDate)
+        {
+            List<HotelDetails> hotelOutput = new List<HotelDetails>();
+            double ratings = 0;
+
+            // Check for proper start and end date
+            if (startDate > endDate)
+            {
+                throw new HotelReservationException(HotelReservationException.ExceptionType.INVALID_DATE_RANGE, "startDate is after endDate");
+            }
+
+            // Iterate through all the hotels
+            foreach (KeyValuePair<string, HotelDetails> hotel in regularHotelMap)
+            {
+                // If rating is greater or first element in dictionary
+                if (hotel.Value.ratings > ratings || ratings == 0)
+                {
+                    hotelOutput.Clear();
+                    hotelOutput.Add(hotel.Value);
+                    hotel.Value.GetTotalFare(startDate, endDate);
+                }
+
+                // If rating is equal to highrst rating
+                else if (hotel.Value.ratings == ratings)
+                    hotelOutput.Add(hotel.Value);
             }
             return hotelOutput;
         }
