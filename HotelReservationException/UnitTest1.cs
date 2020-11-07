@@ -25,7 +25,7 @@ namespace HotelReservationMSTest
             expectedHotel.GetTotalFare(new DateTime(2020, 09, 10), new DateTime(2020, 09, 11));
 
             // Act
-            Icustomer customer = new HotelReservationSystem();
+            Icustomer customer = new HotelReservationSystem(CustomerType.REGULAR_CUSTOMER);
             List<HotelDetails> actual = customer.GetCheapestHotel(new DateTime(2020, 09, 10), new DateTime(2020, 09, 11));
             List<HotelDetails> expected = new List<HotelDetails> {expectedHotel};
             
@@ -46,7 +46,7 @@ namespace HotelReservationMSTest
             expected.ForEach(hotel => hotel.GetTotalFare(new DateTime(2020, 09, 11), new DateTime(2020, 09, 12)));
 
             // Act
-            Icustomer customer = new HotelReservationSystem();
+            Icustomer customer = new HotelReservationSystem(CustomerType.REGULAR_CUSTOMER);
             List<HotelDetails> actual = customer.GetCheapestHotel(new DateTime(2020, 09, 11), new DateTime(2020, 09, 12));
 
             // Assert
@@ -64,7 +64,7 @@ namespace HotelReservationMSTest
             expected.ForEach(hotel => hotel.GetTotalFare(new DateTime(2020, 09, 11), new DateTime(2020, 09, 12)));
 
             // Act
-            Icustomer customer = new HotelReservationSystem();
+            Icustomer customer = new HotelReservationSystem(CustomerType.REGULAR_CUSTOMER);
             List<HotelDetails> actual = customer.GetCheapestBestRatedHotel(new DateTime(2020, 09, 11), new DateTime(2020, 09, 12));
 
             // Assert
@@ -82,7 +82,7 @@ namespace HotelReservationMSTest
             expected.ForEach(hotel => hotel.GetTotalFare(new DateTime(2020, 09, 11), new DateTime(2020, 09, 12)));
 
             // Act
-            Icustomer customer = new HotelReservationSystem();
+            Icustomer customer = new HotelReservationSystem(CustomerType.REGULAR_CUSTOMER);
             List<HotelDetails> actual = customer.GetBestRatedHotel(new DateTime(2020, 09, 11), new DateTime(2020, 09, 12));
 
             // Assert
