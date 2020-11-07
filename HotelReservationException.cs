@@ -4,11 +4,11 @@
 // </copyright>
 // <creator Name="Your name"/>
 // --------------------------------------------------------------------------------------------------------------------
-using System;
-using System.Runtime.Serialization;
-
 namespace HotelReservationSystemWorkshop
 {
+    using System;
+    using System.Runtime.Serialization;
+
     public class HotelReservationException : Exception
     {
         public enum ExceptionType
