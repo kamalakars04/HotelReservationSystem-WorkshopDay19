@@ -12,17 +12,19 @@ namespace HotelReservationSystemWorkshop
         public double totalFare;
         double costOnWeekDay;
         double costOnWeekEnd;
+        double ratings;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HotelDetails"/> class.
         /// </summary>
         /// <param name="hotelName">Name of the hotel.</param>
         /// <param name="costPerDay">The cost per day.</param>
-        public HotelDetails(string hotelName, double costOnWeekDay, double costOnWeekEnd)
+        public HotelDetails(string hotelName, double costOnWeekDay, double costOnWeekEnd, double ratings)
         {
             this.hotelName = hotelName;
             this.costOnWeekDay = costOnWeekDay;
             this.costOnWeekEnd = costOnWeekEnd;
+            this.ratings = ratings;
         }
 
         /// <summary>
@@ -34,6 +36,7 @@ namespace HotelReservationSystemWorkshop
         /// <returns></returns>
         public double GetTotalFare(DateTime startDate, DateTime endDate)
         {
+            double presentFare = 0;
             // Continue loop till all the dates are covered
             while (startDate != endDate.AddDays(1))
             {
@@ -41,12 +44,13 @@ namespace HotelReservationSystemWorkshop
                 // else take cost of week day
                 if (startDate.DayOfWeek == DayOfWeek.Saturday || startDate.DayOfWeek == DayOfWeek.Sunday)
                 {
-                    totalFare += costOnWeekEnd;
+                    presentFare += costOnWeekEnd;
                 }
                 else
-                    totalFare += costOnWeekDay;
+                    presentFare += costOnWeekDay;
                 startDate = startDate.AddDays(1);
             }
+            totalFare = presentFare;
             return totalFare;
         }
 
