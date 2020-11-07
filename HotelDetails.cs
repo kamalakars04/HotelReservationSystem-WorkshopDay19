@@ -10,21 +10,24 @@ namespace HotelReservationSystemWorkshop
         // Variables
         public string hotelName;
         public double totalFare;
-        int costPerDay;
+        double costOnWeekDay;
+        double costOnWeekEnd;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HotelDetails"/> class.
         /// </summary>
         /// <param name="hotelName">Name of the hotel.</param>
         /// <param name="costPerDay">The cost per day.</param>
-        public HotelDetails(string hotelName, int costPerDay)
+        public HotelDetails(string hotelName, double costOnWeekDay, double costOnWeekEnd)
         {
             this.hotelName = hotelName;
-            this.costPerDay = costPerDay;
+            this.costOnWeekDay = costOnWeekDay;
+            this.costOnWeekEnd = costOnWeekEnd;
         }
 
         /// <summary>
         /// UC 2 Gets the total fare.
+        /// UC 3 Refactor the code to include weekDay and weekEnd rates
         /// </summary>
         /// <param name="startDate">The start date.</param>
         /// <param name="endDate">The end date.</param>
@@ -34,7 +37,14 @@ namespace HotelReservationSystemWorkshop
             // Continue loop till all the dates are covered
             while (startDate != endDate.AddDays(1))
             {
-                totalFare += costPerDay;
+                // if the dya is weekend take cost of week end
+                // else take cost of week day
+                if (startDate.DayOfWeek == DayOfWeek.Saturday || startDate.DayOfWeek == DayOfWeek.Sunday)
+                {
+                    totalFare += costOnWeekEnd;
+                }
+                else
+                    totalFare += costOnWeekDay;
                 startDate = startDate.AddDays(1);
             }
             return totalFare;
@@ -61,7 +71,7 @@ namespace HotelReservationSystemWorkshop
             HotelDetails hotelOutput = ((HotelDetails)obj);
 
             // return true if hotel name are same else false
-            return this.hotelName == hotelOutput.hotelName;
+            return this.hotelName == hotelOutput.hotelName && this.totalFare == hotelOutput.totalFare;
         }
     }
 }
