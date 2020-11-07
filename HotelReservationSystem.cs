@@ -75,6 +75,13 @@ namespace HotelReservationSystemWorkshop
             return hotelOutput;
         }
 
+        /// <summary>
+        /// UC 6 Gets the cheapest best rated hotel.
+        /// </summary>
+        /// <param name="startDate">The start date.</param>
+        /// <param name="endDate">The end date.</param>
+        /// <returns></returns>
+        /// <exception cref="HotelReservationException">startDate is after endDate</exception>
         public List<HotelDetails> GetCheapestBestRatedHotel(DateTime startDate, DateTime endDate)
         {
             List<HotelDetails> hotelOutput = new List<HotelDetails>();
