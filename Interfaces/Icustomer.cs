@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HotelReservationSystem
+namespace HotelReservationSystemWorkshop
+
 {
     public interface Icustomer
     {
-        HotelOutput GetCheapestHotel(DateTime startDate, DateTime endDate);
+        List<HotelDetails> GetCheapestHotel(DateTime startDate, DateTime endDate);
     }
 }
