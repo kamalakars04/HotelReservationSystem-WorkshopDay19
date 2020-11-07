@@ -16,9 +16,9 @@ namespace HotelReservationSystemWorkshop
         static HotelReservationSystem()
         {
             IAdmin admin = new HotelReservationSystem();
-            admin.AddNewHotel(new HotelDetails("Lakewood", 110,90));
-            admin.AddNewHotel(new HotelDetails("Bridgewood", 150,50));
-            admin.AddNewHotel(new HotelDetails("Ridgewood", 220,150));
+            admin.AddNewHotel(new HotelDetails("Lakewood", 110,90,3));
+            admin.AddNewHotel(new HotelDetails("Bridgewood", 150,50,4));
+            admin.AddNewHotel(new HotelDetails("Ridgewood", 220,150,5));
         }
 
         /// <summary>

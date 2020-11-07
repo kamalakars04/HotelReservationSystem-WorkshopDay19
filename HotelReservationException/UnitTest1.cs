@@ -15,7 +15,7 @@ namespace HotelReservationMSTest
         public void GiveDateRangeForNormalCustomer()
         {
             //Arrange
-            HotelDetails expectedHotel = new HotelDetails("Lakewood", 110, 150);
+            HotelDetails expectedHotel = new HotelDetails("Lakewood", 110, 150,3);
             expectedHotel.GetTotalFare(new DateTime(2020, 09, 10), new DateTime(2020, 09, 11));
 
             // Act
@@ -35,7 +35,8 @@ namespace HotelReservationMSTest
         public void GiveDateRangeForNormalCustomerGetCheapestHotel()
         {
             //Arrange
-            List<HotelDetails> expected = new List<HotelDetails> { new HotelDetails("Lakewood", 110, 90) , new HotelDetails("Bridgewood", 150, 50) };
+            List<HotelDetails> expected = new List<HotelDetails> { new HotelDetails("Lakewood", 110, 90,3) ,
+                                                                   new HotelDetails("Bridgewood", 150, 50,4) };
             expected.ForEach(hotel => hotel.GetTotalFare(new DateTime(2020, 09, 11), new DateTime(2020, 09, 12)));
 
             // Act
