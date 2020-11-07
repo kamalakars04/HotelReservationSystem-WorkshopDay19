@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29905.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelReservationSystemWorkshop", "HotelReservationSystemWorkshop.csproj", "{6E71D04A-CCD6-4940-A8EF-E3B97A216890}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelReservationMSTest", "HotelReservationException\HotelReservationMSTest.csproj", "{0B812FA5-B81B-45D8-A339-B5955D6B14A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{6E71D04A-CCD6-4940-A8EF-E3B97A216890}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E71D04A-CCD6-4940-A8EF-E3B97A216890}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E71D04A-CCD6-4940-A8EF-E3B97A216890}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B812FA5-B81B-45D8-A339-B5955D6B14A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B812FA5-B81B-45D8-A339-B5955D6B14A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B812FA5-B81B-45D8-A339-B5955D6B14A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B812FA5-B81B-45D8-A339-B5955D6B14A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
