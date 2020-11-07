@@ -12,7 +12,7 @@ namespace HotelReservationSystemWorkshop
         public double totalFare;
         double costOnWeekDay;
         double costOnWeekEnd;
-        double ratings;
+        public double ratings;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HotelDetails"/> class.

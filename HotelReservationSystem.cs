@@ -74,5 +74,48 @@ namespace HotelReservationSystemWorkshop
             }
             return hotelOutput;
         }
+
+        public List<HotelDetails> GetCheapestBestRatedHotel(DateTime startDate, DateTime endDate)
+        {
+            List<HotelDetails> hotelOutput = new List<HotelDetails>();
+            double costOfPresentHotel = 0;
+            double totalFare = 0;
+            double ratings = 0;
+
+            // Check for proper start and end date
+            if (startDate > endDate)
+            {
+                throw new HotelReservationException(HotelReservationException.ExceptionType.INVALID_DATE_RANGE, "startDate is after endDate");
+            }
+
+            // Iterate through all the hotels
+            foreach (KeyValuePair<string, HotelDetails> hotel in regularHotelMap)
+            {
+                // Calculate total fare of each hotel
+                costOfPresentHotel = hotel.Value.GetTotalFare(startDate, endDate);
+
+                // If the cost of present hotel is less than previous 
+                if (costOfPresentHotel.CompareTo(totalFare) < 0 || totalFare == 0)
+                {
+                    hotelOutput.Clear();
+                    hotelOutput.Add(hotel.Value);
+                    totalFare = costOfPresentHotel;
+                    ratings = hotel.Value.ratings;
+                }
+
+                // If the cost of hotel is equal to least cost
+                else if (costOfPresentHotel.CompareTo(totalFare) == 0)
+                {
+                    if(hotel.Value.ratings > ratings)
+                    {
+                        hotelOutput.Clear();
+                        hotelOutput.Add(hotel.Value);
+                    }
+                    if(hotel.Value.ratings == ratings)
+                        hotelOutput.Add(hotel.Value);
+                }
+            }
+            return hotelOutput;
+        }
     }
 }
