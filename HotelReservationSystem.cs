@@ -18,12 +18,34 @@ namespace HotelReservationSystemWorkshop
             Console.WriteLine("Welcome to Hotel Reservation System");
         }
 
-        static HotelReservationSystem()
+        /// <summary>
+        /// uc 9 Initializes a new instance of the <see cref="HotelReservationSystem"/> class.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <exception cref="HotelReservationException">INVALID CUSTOMER TYPE</exception>
+        public HotelReservationSystem(CustomerType type)
         {
-            IAdmin admin = new HotelReservationSystem();
-            admin.AddNewHotel(new HotelDetails("Lakewood", 110,90,3));
-            admin.AddNewHotel(new HotelDetails("Bridgewood", 150,50,4));
-            admin.AddNewHotel(new HotelDetails("Ridgewood", 220,150,5));
+            IAdmin admin;
+            switch (type)
+            {
+                case CustomerType.REGULAR_CUSTOMER:
+                    admin = new HotelReservationSystem();
+                    admin.AddNewHotel(new HotelDetails("Lakewood", 110, 90, 3));
+                    admin.AddNewHotel(new HotelDetails("Bridgewood", 150, 50, 4));
+                    admin.AddNewHotel(new HotelDetails("Ridgewood", 220, 150, 5));
+                    break;
+
+                case CustomerType.REWARD_CUSTOMER:
+                    admin = new HotelReservationSystem();
+                    admin.AddNewHotel(new HotelDetails("Lakewood", 80, 80, 3));
+                    admin.AddNewHotel(new HotelDetails("Bridgewood", 110, 50, 4));
+                    admin.AddNewHotel(new HotelDetails("Ridgewood", 100, 40, 5));
+                    break;
+
+                default:
+                    throw new HotelReservationException(HotelReservationException.ExceptionType.INVALID_CUSTOMER_TYPE, "INVALID CUSTOMER TYPE");
+            }
+            
         }
 
         /// <summary>

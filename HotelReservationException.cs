@@ -13,7 +13,8 @@ namespace HotelReservationSystemWorkshop
     {
         public enum ExceptionType
         {
-            INVALID_DATE_RANGE
+            INVALID_DATE_RANGE,
+            INVALID_CUSTOMER_TYPE
         }
 
         public ExceptionType type;
