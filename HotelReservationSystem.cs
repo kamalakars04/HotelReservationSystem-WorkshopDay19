@@ -29,6 +29,7 @@ namespace HotelReservationSystemWorkshop
             switch (type)
             {
                 case CustomerType.REGULAR_CUSTOMER:
+                    regularHotelMap.Clear();
                     admin = new HotelReservationSystem();
                     admin.AddNewHotel(new HotelDetails("Lakewood", 110, 90, 3));
                     admin.AddNewHotel(new HotelDetails("Bridgewood", 150, 50, 4));
@@ -36,6 +37,7 @@ namespace HotelReservationSystemWorkshop
                     break;
 
                 case CustomerType.REWARD_CUSTOMER:
+                    regularHotelMap.Clear();
                     admin = new HotelReservationSystem();
                     admin.AddNewHotel(new HotelDetails("Lakewood", 80, 80, 3));
                     admin.AddNewHotel(new HotelDetails("Bridgewood", 110, 50, 4));
@@ -45,7 +47,6 @@ namespace HotelReservationSystemWorkshop
                 default:
                     throw new HotelReservationException(HotelReservationException.ExceptionType.INVALID_CUSTOMER_TYPE, "INVALID CUSTOMER TYPE");
             }
-            
         }
 
         /// <summary>
