@@ -88,5 +88,20 @@ namespace HotelReservationMSTest
             // Assert
             CollectionAssert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void GiveDateRangeForRewardCustomerGetCheapestBestRatedHotel()
+        {
+            //Arrange
+            List<HotelDetails> expected = new List<HotelDetails> { new HotelDetails("Ridgewood", 100, 40, 5) };
+            expected.ForEach(hotel => hotel.GetTotalFare(new DateTime(2020, 09, 11), new DateTime(2020, 09, 12)));
+
+            // Act
+            Icustomer customer = new HotelReservationSystem(CustomerType.REWARD_CUSTOMER);
+            List<HotelDetails> actual = customer.GetCheapestBestRatedHotel(new DateTime(2020, 09, 11), new DateTime(2020, 09, 12));
+
+            // Assert
+            CollectionAssert.AreEqual(expected, actual);
+        }
     }
 }
