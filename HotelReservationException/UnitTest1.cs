@@ -27,5 +27,23 @@ namespace HotelReservationMSTest
             // Assert
             CollectionAssert.AreEqual(expected, actual);
         }
+
+        /// <summary>
+        /// TC 4 Gives the date range for normal customer get cheapest hotel.
+        /// </summary>
+        [TestMethod]
+        public void GiveDateRangeForNormalCustomerGetCheapestHotel()
+        {
+            //Arrange
+            List<HotelDetails> expected = new List<HotelDetails> { new HotelDetails("Lakewood", 110, 90) , new HotelDetails("Bridgewood", 150, 50) };
+            expected.ForEach(hotel => hotel.GetTotalFare(new DateTime(2020, 09, 11), new DateTime(2020, 09, 12)));
+
+            // Act
+            Icustomer customer = new HotelReservationSystem();
+            List<HotelDetails> actual = customer.GetCheapestHotel(new DateTime(2020, 09, 11), new DateTime(2020, 09, 12));
+
+            // Assert
+            CollectionAssert.AreEqual(expected, actual);
+        }
     }
 }
